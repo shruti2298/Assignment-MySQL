@@ -7,17 +7,17 @@ mysql> select @orderNumber:=MAX(orderNumber) +1 from orders;
 +-----------------------------------+
 | @orderNumber:=MAX(orderNumber) +1 |
 +-----------------------------------+
-|                             10428 |
+|                             10429 |
 +-----------------------------------+
 1 row in set (0,02 sec)
 
-mysql> insert into orders (orderNumber,orderDate,requiredDate,shippedDate,status,customerNumber) values(@orderNumber,'2019-08-10','2019-08-29','2019-08-16','In Process',103);
+mysql> insert into orders (orderNumber,orderDate,requiredDate,shippedDate,status,customerNumber) values(@orderNumber,'2019-08-10','2019-08-29','2019-08-16','In Process',112);
 Query OK, 1 row affected (0,04 sec)
 
-mysql> insert into orderdetails (orderNumber,productCode,quantityOrdered,priceEach,orderLineNumber) values (@orderNumber,'S18_1749',1,'130000',1);
+mysql> insert into orderdetails (orderNumber,productCode,quantityOrdered,priceEach,orderLineNumber) values (@orderNumber,'S24_2000',1,'1150',1);
 Query OK, 1 row affected (0,00 sec)
 
-mysql> INSERT into payments (customerNumber,checkNumber,paymentDate,amount) values(103,'MN43226','2019-08-17',130000);
+mysql> INSERT into payments (customerNumber,checkNumber,paymentDate,amount) values(112,'SP22039','2019-08-17',1150);
 Query OK, 1 row affected (0,00 sec)
 
 mysql> COMMIT;
