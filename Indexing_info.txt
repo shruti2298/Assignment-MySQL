@@ -1,0 +1,81 @@
+## INDEXING
+
+ 	It's an improvement in speed search and reduces time taken to search. Index of a table functions like the index of a book. Data is taken from a column of the table and is stored in a certain order in a distinct place called an index. I/0 cost is reduced due to indexing.
+	- Dense Index: Index read corresponding to every key.
+	- Sparse Index: Index read not corresponding to every key. Keys must be sequential in this case.
+
+## Types of Indexing:
+
+	1. Primary Indexing
+	2. Clustered Indexing
+	3. Secondary Indexing
+
+## Primary Indexing:
+
+	- Type of Sparse Indexing.
+	- Used when the data is ordered/sorted and have a key value i.e. a unique attribute.
+	- Number of entries in Index Table = Number of blocks in Hard Disk.
+	- Time Complexity: log(N)+1, where N = Number of blocks in Hard Disk.
+
+## Clustered Indexing:
+
+	- Type of Sparse Indexing.
+	- Used when the data is ordered/sorted and does not have a key value i.e. a unique attribute.
+	- Time Complexity: log(N)+1+1, where N = Number of blocks in Hard Disk.
+
+## Secondary Indexing:
+
+	- Type of Dense Indexing.
+	- Used when the data is uordered/unsorted and either have/don't have a key value i.e. a unique attribute.
+	- Number of records in Index Table = Number of records in Hard Disk.
+	- Time Complexity: In case of a key value present, log(N)+1, whereas in case of a key value not present, log(N)+1+1... i.e. depends upon the pointers in intermediate layer, where N = Number of blocks in Hard Disk.
+
+## B - Tree:
+
+	- B - Tree is used to index the data and provides fast access to the actual data stored on the disks since, the access to value stored in a large database that is stored on a disk is a very time consuming process.
+	- A B-Tree of order p can have at most p-1 keys and p children.
+	- B tree of order p contains the following properties:
+
+		1. Every node in a B-Tree contains at most p children.
+		2. Every node in a B-Tree except the root node and the leaf node contain at least m/2 children.
+		3. The root nodes must have at least 2 nodes.
+		4. All leaf nodes must be at the same level.
+	- Keys are the searching criteria.
+	- Depth Wise Search.
+	- Searching slower, deletion also complex.
+	- No reduntant search keys present.
+	- Leaf nodes not linked to each other.
+	- Data is stored in leaf as well as internal nodes.
+
+## B+ - Tree:
+
+	- B+ Tree is an extension of B Tree which allows efficient insertion, deletion and search operations.
+	- Data is present only in leaf nodes.
+	- Breadth Wise Search.
+	- Searching faster, deletion easy i.e. directly from leaf nodes.
+	- Reduntant search keys present.
+	- Leaf nodes linked to each other.
+
+## Hashing:
+
+	- Hashing uses hash functions with search keys as parameters to generate the address of a data record.
+	- Bucket − A hash file stores data in bucket format. Bucket is considered a unit of storage.
+	- Hash Function − A hash function, h, is a mapping function from search keys to bucket addresses.
+	- Types:
+		1. Static Hashing:
+			- In static hashing, when a search-key value is provided, the hash function always computes the same address.
+			- The output address shall always be same for that function. 
+			- The number of buckets provided remains unchanged at all times.
+			- Problem: It starts off with an idea of how much data is going to be hashed but it can't adopt for much more data than what it started off.
+		2. Dynamic Hashing:
+			- It adopts dynamically to the situation by changing the hash function automatically.
+			- Also known as Extended Hashing.
+	- Bucket Overflow:
+		- Also know as collision which is a very fatal state for static hashing.
+		- 1. Chaining/Open Hashing: In this method, instead of overwriting older one the next available data block is used to enter the new record. This method is also known as Linear Probing.
+		- 2. Open Addressing/Closed Hashing: In the close hashing method, when buckets are full, a new bucket is allocated for the same hash and result are linked after the previous one. Uses probe sequences.
+			- Linear Probing.
+			- Quadratic Probing.
+			- Double Hashing.
+		
+	
